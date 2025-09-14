@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login - Next University</title>
+    <link rel="stylesheet" href="../assets/css/custom.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="../assets/images/logo.png" alt="Next University" class="logo">
+                <span>Next University</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="../index.html">Home</a>
+                <a href="signup.html">Student Registration</a>
+                <a href="../admin/login.html">Admin Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Login Form -->
+    <section class="hero">
+        <div class="container">
+            <div class="form-container">
+                <h2 style="text-align: center; color: var(--dark-brown); margin-bottom: 1rem;">Student Login</h2>
+                <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem;">Access your student dashboard</p>
+                
+                <form id="loginForm" onsubmit="submitLogin(event)">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password *</label>
+                        <input type="password" id="password" name="password" required placeholder="Enter your password">
+                    </div>
+
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox" name="remember">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div id="alertContainer"></div>
+
+                    <button type="submit" class="btn btn-primary btn-large" style="width: 100%;">
+                        Login to Dashboard
+                    </button>
+                </form>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="#" style="color: var(--primary-red); text-decoration: none;">Forgot Password?</a>
+                </div>
+
+                <hr style="margin: 2rem 0; border-color: var(--border-light);">
+
+                <p style="text-align: center; color: var(--text-light);">
+                    Don't have an account? <a href="signup.html" style="color: var(--primary-red);">Register here</a>
+                </p>
+
+                <!-- Demo Credentials -->
+                <div style="background: var(--light-beige); padding: 1rem; border-radius: 8px; margin-top: 2rem;">
+                    <h4 style="color: var(--primary-red); margin-bottom: 1rem;">Demo Credentials</h4>
+                    <p style="margin: 0; font-size: 0.9rem; color: var(--text-dark);">
+                        <strong>Email:</strong> student@test.com<br>
+                        <strong>Password:</strong> password
+                    </p
