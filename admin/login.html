@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - University Admissions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #91040C;
+            --dark-brown: #23140C;
+            --light-beige: #D0BA98;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --border-gray: #ddd;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--light-beige), var(--white));
+            color: var(--dark-brown);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .login-container {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .university-logo {
+            margin-bottom: 1rem;
+        }
+
+        .university-name {
+            color: var(--primary-red);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-title {
+            color: var(--dark-brown);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-brown);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 3px rgba(145, 4, 12, 0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+            background: var(--primary-red);
+            color: var(--white);
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .login-btn:hover {
+            background: var(--dark-brown);
+            transform: translateY(-1px);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .forgot-password {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .forgot-password a {
+            color: var(--primary-red);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-password a:hover {
+            color: var(--dark-brown);
+            text-decoration: underline;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--dark-brown);
+            color: var(--white);
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .demo-credentials {
+            background: var(--light-beige);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--dark-brown);
+        }
+
+        .demo-credentials strong {
+            color: var(--primary-red);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            .login-title {
+                font-size: 1.7rem;
+            }
+
+            .university-name {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Loading state */
+        .login-btn.loading {
+            background: var(--border-gray);
+            cursor: not-allowed;
+            position: relative;
+        }
+
+        .login-btn.loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            margin: auto;
+            border: 2px solid transparent;
+            border-top-color: var(--white);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="university-logo">
+            <div class="university-name">Summit University Admin Portal</div>
+        </div>
+        
+        <h2 class="login-title">Admin Login</h2>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            
+            <button type="submit" class="login-btn" id="loginBtn">Login to Dashboard</button>
+        </form>
+
+        <div class="forgot-password">
+            <a href="#">Forgot Password?</a>
+        </div>
+
+        
+    </div>
+
+    <footer class="footer">
+        <p>&copy; @2023 Summit University |All Rights Reserved| Contact admissions@summituniversity.edu</p>
+    </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const loginBtn = document.getElementById('loginBtn');
+            
+            // Add loading state
+            loginBtn.classList.add('loading');
+            loginBtn.textContent = 'Logging in...';
+            loginBtn.disabled = true;
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                // Simple validation (in production, this should be server-side)
+                if (email === 'admin@university.edu' && password === 'admin123') {
+                    alert('Login successful! Redirecting to dashboard...');
+                    // In a real application, redirect to dashboard
+                    // window.location.href = 'admin/dashboard.html';
+                } else {
+                    alert('Invalid credentials. Please check your email and password.');
+                }
+                
+                // Remove loading state
+                loginBtn.classList.remove('loading');
+                loginBtn.textContent = 'Login to Dashboard';
+                loginBtn.disabled = false;
+            }, 1500);
+        });
+
+        // Add enter key support
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+            }
+        });
+
+        // Add input validation feedback
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.value.trim() === '') {
+                    this.style.borderColor = '#dc3545';
+                } else {
+                    this.style.borderColor = '#28a745';
+                }
+            });
+
+            input.addEventListener('focus', function() {
+                this.style.borderColor = 'var(--primary-red)';
+            });
+        });
+    </script>
+</body>
+</html>
